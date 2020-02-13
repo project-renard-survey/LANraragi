@@ -10,7 +10,7 @@ jobs:
       run: |
         docker build -t difegue/lanraragi -f ./tools/build/docker/Dockerfile .
         echo "🎌 Running LRR Test Suite 🎌"
-        docker run -t --entrypoint /bin/sh difegue/lanraragi -c "cd /home/koyomi/lanraragi && apk add perl-utils perl-dev wget g++ make && prove -l -v tests/*.t"
+        docker run -t --entrypoint /bin/sh difegue/lanraragi -c "apk add perl-utils perl-dev wget g++ make && prove -l -v tests/*.t"
     - name: Perl Critic
       uses: ./.github/action-critic
       env:
