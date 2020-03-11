@@ -12,6 +12,8 @@ jobs:
         echo "🎌 Running LRR Test Suite 🎌"
         docker run -t --entrypoint sh difegue/lanraragi:testing -c "apk add perl-utils perl-dev wget g++ make nodejs nodejs-npm && npm test"
     - name: Perl Critic
-      uses: ./.github/action-critic
+      uses: Difegue/action-perlcritic@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          args: ./lib/* ./script/* ./tools/install.pl
